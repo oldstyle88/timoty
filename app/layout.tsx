@@ -1,5 +1,19 @@
 import type { Metadata } from "next";
+import { Fraunces, Manrope } from "next/font/google";
+
+import { SiteShell } from "@/components/site-shell";
+
 import "./globals.css";
+
+const display = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+});
+
+const body = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+});
 
 export const metadata: Metadata = {
   title: "Timoty Drinks & Kitchen — Ristorante Roma, Via Torino 46",
@@ -13,7 +27,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="it">
-      <body>{children}</body>
+      <body className={`${display.variable} ${body.variable}`}>
+        <SiteShell locale="it">{children}</SiteShell>
+      </body>
     </html>
   );
 }
